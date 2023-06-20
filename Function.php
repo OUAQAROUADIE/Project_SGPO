@@ -8,7 +8,7 @@ session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="IndexCss.css">
 </head>
-<body>
+<body id="erreur">
     <div class="row">
         <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
             <img src="Images\1651706866270.jpeg" />
@@ -48,7 +48,7 @@ if (!empty($_POST)) {
         header('location:table.php');
         exit;
     } else {
-        header('location:table.php');
+        header('location:erreur.php');
         echo "erreur";
 
     }
