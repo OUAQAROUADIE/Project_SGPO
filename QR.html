@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code QR </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="IndexCss.css" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <nav class="navbar navbar-dark navbar-expand-lg shadow-sm p-3 mb-5 bg-white rounded" style="background-color: #fff8ef;">
+    <a class="navbar-brand mr-auto p-2" href="#">
+        <img src="Images\sgpo consulting logo - original.png" alt="Avatar Logo" style="width: 120px;" style="margin-left:100px" />
+    </a>
+    <button class="navbar-toggler custom-collapse-button-color" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon custom-toggler-icon-color"></span>
+    </button>
+
+    <style>
+      .custom-toggler-icon-color {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='5' x2='30' y2='5' stroke='black' stroke-width='2'/%3E%3Cline x1='0' y1='15' x2='30' y2='15' stroke='black' stroke-width='2'/%3E%3Cline x1='0' y1='25' x2='30' y2='25' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
+      }
+    </style>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto mr-5 text-center">
+        <li class="nav-item pe-4">
+          <a class="nav-link text-black" href="#footer"><h6>Home</h6></a>
+        </li>
+        <li class="nav-item pe-4">
+          <a class="nav-link text-black" href="#footer"><h6>Menu</h6></a>
+        </li>
+        <li class="nav-item pe-4">
+          <a class="nav-link text-black" href="#"><h6>A propos</h6></a>
+        </li>
+        <li class="nav-item pe-4">
+          <a class="nav-link text-black" href="#"><h6>Contactez-nous</h6></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt-5 QRdiv" style="background-color:white; height:500px">
+        <h1 class="text-center mt-4" style="color: #E76F02;">Scan this QR code</h1>
+        <div id="qrcode" class="text-center mx-auto d-flex justify-content-center mt-5"></div>
+        <style>
+          .QRdiv {
+            box-shadow: 2px 3px 3px 3px rgba(10, 2, 2, 0.1);
+            border-radius: 20px;
+        }
+        </style>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var qrCodeDiv = document.getElementById('qrcode');
+
+      function generateQRCodeContent() {
+        var currentDate = new Date();
+        var dateTime = currentDate.toLocaleString();
+        return dateTime;
+      }
+
+      var qrCode = new QRCode(qrCodeDiv, {
+        text: generateQRCodeContent(),
+        width: 300,
+        height: 300
+      });
+    });
+  </script>
+</body>
+</html>
