@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page d'inscription</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="IndexCss.css">
+
+</head>
+<body class="bg-image registerBody">
+    <style>
+        .registerBody {
+            background-image: url('https://www.salesforce.com/content/dam/blogs/br/2022/03/CDP.jpg');
+            background-color: rgba(90, 128, 128, 0.2); /* Adjust the opacity value (0.5) as needed */
+            background-blend-mode: overlay;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Default button styles */
+        .register-button {
+            width: 420px;
+            background-color: #E76F02;
+            height: 35px;
+        }
+        .divForm{
+            border-radius: 50px;
+        }
+    
+        /* Responsive styles for mobile */
+        @media (max-width: 767px) {
+            .custom-button {
+                width: 100%;
+            }
+        }
+    </style>
+    
+    <div class="register-container mt-5">
+        <div class="bg-white  align-items-center divForm" style="height: 600px; width:580px;">
+            <div class=" justify-content-center mt-5" style="margin-left: 17%;">
+                <h2 class="ml-5">Create an account</h2>
+                <p class="ml-4">Sign up now and unlock exclusive access!</p>
+            </div>
+            <form id="registerForm" class="mt-5" method="post">
+                <div class="form-group w-75 d-flex justify-content-center align-items-center ml-5">
+                    <input type="text" name="username" class="form-control w-75" id="username" placeholder="Your Name" required>
+                </div>
+                <div class="form-group w-75 d-flex justify-content-center align-items-center ml-5">
+                    <input type="password" name="password" class="form-control w-75" id="password" placeholder="Password" required>
+                </div>
+                <div class="form-group w-75 d-flex justify-content-center align-items-center ml-5">
+                    <label for="post" class="w-25">Poste:</label>
+                    <select class="form-control w-50" id="post" name="post">
+                        <option value="Dev">Dev</option>
+                        <option value="RH">RH</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Data">Data</option>
+                        <option value="Cloud">Cloud</option>
+                        <option value="Sécurité">Sécurité</option>
+                    </select>
+                </div>
+                <div class="form-group d-flex w-75 justify-content-center align-items-center ">
+                    <label for="active" class="mt-2 " style="margin-left: 24%;">Activation:</label>
+                    <input type="checkbox" class="form-control w-75" style="margin-left: 47%;" id="active">
+                </div>
+              
+                <div class="form-group w-75 d-flex justify-content-center ml-5 " style="margin-left:px ;">
+                    <button type="submit" class="border-0 text-white register-button w-75 ">S'inscrire</button>
+                </div>
+                <div class="text-center mt-5 mr-5">
+                <a>Have already an account ? <a href="login.html" style="color: #E76F02;">Login here</a></a>
+            </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#registerForm').submit(function(event) {
+                event.preventDefault(); // Empêche le rechargement de la page après la soumission du formulaire
+
+                // Récupère les valeurs des champs du formulaire
+                var username = $('#username').val();
+                var password = $('#password').val();
+                var active = $('#active').prop('checked') ? 1 : 0;
+                var post = $('#post').val();
+
+                // Envoie les données au serveur PHP via AJAX
+                $.ajax({
+                    url: 'register.php',
+                    type: 'POST',
+                    data: {
+                        username: username,
+                        password: password,
+                        active: active,
+                        post: post
+                    },
+                    success: function(response) {
+                        // Affiche la réponse du serveur
+                        console.log(response);
+
+                        // Réinitialise les champs du formulaire
+                        $('#registerForm')[0].reset();
+                    },
+                    error: function(xhr, status, error) {
+                        // Gère les erreurs AJAX
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
